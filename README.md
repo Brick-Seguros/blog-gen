@@ -4,7 +4,7 @@
 ### Overview
 This is a simple tool that generates blog posts from given questions. 
 
-It was built based on a paper called STORM - Synthesis of Topic Outlines through
+It was built based on a paper called <a href="https://arxiv.org/pdf/2402.14207">STORM<a> - Synthesis of Topic Outlines through
 Retrieval and Multi-perspective Question Asking.
 
 The intuition to generate a blog post from a given topic is:
