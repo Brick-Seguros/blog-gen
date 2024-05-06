@@ -23,6 +23,30 @@ The intuition to generate a blog post from a given topic is:
     pip install -r requirements.txt
 ```
 
+### Environment
+
+Required ENVS:
+```
+OPENAI_API_KEY=
+
+API_KEY=
+
+FLASK_ENV=
+
+S3_BUCKET=
+S3_ACCESS_KEY=
+S3_SECRET_KEY=
+S3_REGION=
+```
+
+Optional ENVS (For metrics and monitoring):
+```
+LANGCHAIN_TRACING_V2=
+LANGCHAIN_ENDPOINT=
+LANGCHAIN_API_KEY=
+LANGCHAIN_PROJECT=
+```
+
 ### Execution
 
 ```
