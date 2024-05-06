@@ -14,7 +14,7 @@ class GenerateOutlineUseCase:
             [
                 (
                     "system",
-                    "You are a Blog Post writer. Write an outline for a Blog Post page about a user-provided topic. Be comprehensive and specific.",
+                    "Você é um escritor de Blog. Escreva um esboço para uma página de Blog sobre um tópico fornecido pelo usuário. Seja abrangente e específico.",
                 ),
                 ("user", topic),
             ]

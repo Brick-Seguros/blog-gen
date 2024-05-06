@@ -87,7 +87,7 @@ class ArticleWriterUseCase:
                     "messages": [
                         AIMessage(
                             content=f"Você disse que estava escrevendo um texto de Blog sobre {topic}?",
-                            name="Subject_Matter_Expert",
+                            name="subject_matter_rxpert",
                         )
                     ],
                 })
