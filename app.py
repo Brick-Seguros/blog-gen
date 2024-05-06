@@ -1,14 +1,19 @@
-from flask import Flask, jsonify, request
+import os
+import uuid
 from dotenv import load_dotenv
-from repository import QuestionRepository, ChatRepository
-from middleware import auth_middleware
+
+from flask import Flask, jsonify, request
+
 from langchain_openai import ChatOpenAI
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
+from langchain_community.utilities.duckduckgo_search import DuckDuckGoSearchAPIWrapper
+from langchain_community.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.tools import tool
-from blog_publisher import BlogPublisher
-import random
-import uuid
+
+from middleware import auth_middleware
 from usecase_article_writer import ArticleWriterUseCase
 from usecase_interview import InterviewManager
 from usecase_outline_generation import GenerateOutlineUseCase
@@ -19,13 +24,8 @@ from usecase_refine_outline import RefineOutlineUseCase
 from usecase_related_topics_generation import GenerateRelatedTopicsUseCase
 from usecase_survey_subjects import SurveySubjectsUseCase
 
-from langchain_community.utilities.duckduckgo_search import DuckDuckGoSearchAPIWrapper
-from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import TextLoader
-
-import os
+from blog_publisher import BlogPublisher
+# from repository import QuestionRepository, ChatRepository
 
 
 # Loading environment variables -----------------------------------
@@ -157,33 +157,6 @@ print("Building Routes")
 @app.route('/', methods=['GET'])
 def index():
     return jsonify({'message': 'Welcome to the API'}), 200
-
-@app.route('/question', methods=['POST'])
-def send_question():
-    # Authenticate the request
-    auth_result = auth_middleware(request)
-    if not auth_result['shoudl_continue']:
-        return jsonify({'error': auth_result['message']}), auth_result['status']
-
-    # Get question from request body
-    data = request.get_json()
-    question = data.get('question')
-
-    # Ensure question is provided
-    if not question:
-        return jsonify({'error': 'Question is missing'}), 400  # Bad Request
-
-    return jsonify({'response': 'Received question: {}'.format(question)}), 200
-
-
-@app.route('/question', methods=['GET'])
-def get_question():
-    # Authenticate the request
-    auth_result = auth_middleware(request)
-    if not auth_result['shoudl_continue']:
-        return jsonify({'error': auth_result['message']}), auth_result['status']
-
-    return jsonify({'response': 'This is a GET request'}), 200
 
 @app.route('/article', methods=['POST'])
 def generate_article():
