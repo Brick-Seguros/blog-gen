@@ -8,7 +8,7 @@ It was built based on a paper called <a href="https://arxiv.org/pdf/2402.14207">
 Retrieval and Multi-perspective Question Asking.
 
 The intuition to generate a blog post from a given topic is:
-- We build a outline of the expected result
+- We build an outline of the expected result
 - We generate 5 others related topics
 - We create 3 different experts (LLM Prompts) based on those topics and an external knowledge base. (In this case *Blog das Locadoras* and *Google Search*) 
 - We conduct an interview process with each one of those experts. 
